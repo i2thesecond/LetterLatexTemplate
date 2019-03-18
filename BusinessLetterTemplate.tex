@@ -1,0 +1,50 @@
+\documentclass{letter}
+\makeatletter
+\let\@texttop\relax
+\makeatother
+
+\renewcommand{\familydefault}{\sfdefault}
+\usepackage[margin=1.0in]{geometry}
+\usepackage{hyperref}
+
+\signature{$fullname$}
+
+\makeatletter
+\def\opening#1{\ifx\@empty\fromaddress
+	\thispagestyle{firstpage}%
+	{\raggedleft\@date\par}%
+	\else  % home address
+	\thispagestyle{empty}%
+	{\noindent\let\\\cr\halign{##\hfil\cr\ignorespaces
+			\fromaddress \cr\noalign{\kern 8\parskip}%
+			\@date\cr}\par}%
+	\fi
+	\vspace{4\parskip}%
+	{\raggedright \toname \\ \toaddress \par}%
+	\vspace{1\parskip}
+	#1\par\nobreak}
+
+\makeatother
+
+\address{$fullname$ \\ $streetaddress$ \\ $city, state zipcode$}
+\longindentation=0pt
+\begin{document}
+
+\begin{letter}{
+		$name of recipient$\\
+		$title of recipient$\\
+		$organization name$\\
+		$location name$\\
+		$recipient's address$\\
+		$recipient's city state zipcode$\\}
+
+\opening{Dear $name of recipient$:}
+
+$letter's body goes here$
+
+\closing{Sincerely,}
+
+\encl{$any enclosed document names$}
+
+\end{letter}
+\end{document}
